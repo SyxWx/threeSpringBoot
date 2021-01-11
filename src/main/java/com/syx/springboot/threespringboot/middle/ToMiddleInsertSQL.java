@@ -25,14 +25,6 @@ public class ToMiddleInsertSQL {
         StringBuilder sql   =  new StringBuilder();
         StringBuilder values   =  new StringBuilder();
         String value = "";
-        /**
-         * INSERT INTO data_types
-         * (facility_title,facility_type_id,facility_category,plant_title,
-         *  process_title,title,category_id,                -- ,type,period,format,
-         *  unit,status,remark,device_no,node_id, is_opc)
-         * VALUES
-         *  ('1', '散料秤#1', NULL, '1', '球团厂', '1#2#竖炉', '流量', '2', '4', '60', '2', 't/h',  '1', '一分钟平均值', 'YG_SC_QT_01', NULL, '0')
-         */
         for (Middle middle :  list){
             values.append("(");
             // 设备名称    facility_title;
@@ -82,15 +74,42 @@ public class ToMiddleInsertSQL {
                 );
         sql.append(values);
 
-
-
-        System.out.println(list.toString());
-
-        System.out.println("----------------------------------------------------------");
+        System.out.println("---------------------新增条数："+list.size() +" 条 -------------------------------------");
         System.out.println(sql);
         System.out.println("----------------------------------------------------------");
 
 
+        /**
+         *
+         -- 去重
+         SELECT * FROM
+         (SELECT device_no,title,COUNT(1) ct FROM data_types GROUP BY device_no,title) t WHERE ct>1
+
+         -- 更新type
+         UPDATE data_types SET type=5 WHERE remark LIKE '%累计次数%' AND type IS NULL
+         UPDATE data_types SET type=4 WHERE remark LIKE '%平均值%' AND type IS NULL
+         UPDATE data_types SET type=3 WHERE remark LIKE '%最大值%' AND type IS NULL
+         UPDATE data_types SET type=2 WHERE remark LIKE '%最小值%' AND type IS NULL
+         UPDATE data_types SET type=1 WHERE remark LIKE '%一次%' AND type IS NULL
+
+         UPDATE data_types SET status=1
+
+         -- 更新period
+         UPDATE data_types SET period=30 WHERE remark LIKE '30%' AND period IS NULL
+         UPDATE data_types SET period=60 WHERE (remark LIKE '一分钟%' OR remark LIKE '1分钟%') AND period IS NULL
+         UPDATE data_types SET period=300 WHERE (remark LIKE '5分钟%' OR remark LIKE '五分钟%') AND period IS NULL
+
+         -- 更新format
+         -- format=2   2:float
+         UPDATE data_types SET format=2 WHERE (category_id IN (2,3,6,9,12,17,18,19,21,23,70,113,14,8,10,20,15,'300','301','302','303')) AND format IS NULL
+         -- format=1  1:int
+         UPDATE data_types SET format=1 WHERE category_id=1 AND format IS NULL
+         -- format=3  3:bool（true:1,false:0)，
+         UPDATE data_types SET format=3 WHERE category_id=30 AND format IS NULL
+         -- format=4  4:string
+         UPDATE data_types SET format=4 WHERE category_id IN (4,5,24) AND format IS NULL
+         *
+         */
 
 
     }
