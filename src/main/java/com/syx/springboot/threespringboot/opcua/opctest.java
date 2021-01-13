@@ -60,7 +60,7 @@ public class opctest {
                     OpcRunnable opcRunnable = new OpcRunnable();
                     opcRunnable.setPeriod(period.intValue());
                     opcRunnable.setCollectMap(collectMap);
-                    new Thread(opcRunnable, "OPC thread" + opcRunnable.getPeriod()).start();
+                   // new Thread(opcRunnable, "OPC thread" + opcRunnable.getPeriod()).start();
                     opcRunnableList.add(opcRunnable);
                     log.info("==========>start OPC thread: {}", opcRunnable.getPeriod());
 
