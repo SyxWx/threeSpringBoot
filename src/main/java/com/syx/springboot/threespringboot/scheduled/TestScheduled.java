@@ -28,8 +28,12 @@ public class TestScheduled {
          *  切换分支
          *  git checkout syx_dev_frist
          *
-         *  推送分支
+         *  推送分支到仓库(推送后，在远程仓库中查看到分支)
          *  git push origin syx_dev_frist
+         *
+         *  推送代码到仓库分支(推送后，在远程仓库所属的分支中查看代码)
+         *  git push origin syx_dev_frist
+         *
          *
          *
          */
