@@ -10,5 +10,12 @@ public class TestScheduled {
     @Scheduled(cron = "3 * * * * ?" )
     public void testschedule(){
         System.out.println("测试定时任务");
+        //
+        System.out.println("测试定时任务");
+        System.out.println("测试定时任务");
+        System.out.println("测试定时任务");
+        System.out.println("测试定时任务");
+        System.out.println("测试定时任务");
+
     }
 }
