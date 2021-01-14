@@ -44,8 +44,17 @@ public class TestScheduled {
          *  获取远程仓库中的代码到本地仓库中。
          *  git pull
          *
-         *
-         *
+         *  ------合并syx_dev分支的数据到master分支中
+         *  在syx_dev分支中提交代码，然后push到所属分支上
+         *  git push origin syx_dev
+         *  切换到master分支
+         *  git checkout master
+         *  pull最新的代码
+         *  git pull
+         *  合并操作 merge
+         *  git merge dev_syx
+         *  推送在远程master分支
+         *  git push origin master
          */
 
 
