@@ -35,6 +35,13 @@ public class TestScheduled {
          *  git push origin syx_dev_frist
          *
          *
+         *  推送代码到远程仓库  从syx_dev_frist分支 推送到 syx_dev分支
+         *  git push origin syx_dev_frist:syx_dev
+         *
+         *  获取远程仓库中的代码到本地仓库中。
+         *  git pull
+         *
+         *
          *
          */
 
