@@ -12,18 +12,6 @@ public class TestScheduled {
         System.out.println("测试定时任务");
         //
         System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
-        System.out.println("测试定时任务");
 
 
         /**
