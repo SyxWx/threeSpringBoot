@@ -11,7 +11,11 @@ public class TestScheduled {
     public void testschedule(){
         System.out.println("测试定时任务");
         //
-        System.out.println("测试定时任务");
+        System.out.println("syx_dev测试定时任务");
+        System.out.println("syx_dev测试定时任务");
+        System.out.println("syx_dev测试定时任务");
+        System.out.println("syx_dev测试定时任务");
+        System.out.println("syx_dev测试定时任务");
         System.out.println("测试git-merge定时任务");
         System.out.println("测试git-merge定时任务");
         System.out.println("测试git-merge定时任务");
