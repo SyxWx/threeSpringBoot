@@ -25,6 +25,8 @@ public class ToMiddleInsertSQL {
         StringBuilder sql   =  new StringBuilder();
         StringBuilder values   =  new StringBuilder();
         String value = "";
+        String type= "";
+        String period = "";
         for (Middle middle :  list){
             values.append("(");
             // 设备名称    facility_title;
@@ -51,6 +53,12 @@ public class ToMiddleInsertSQL {
             values.append( "8,");
             // 频率   remark;
             values.append( middle.getRemark()!= null && !middle.getRemark().isEmpty() ? "'"+middle.getRemark() +"',":"NULL,");
+            //取值类型  1一次  2最小值  3最大值  4平均值  5累计次数
+            type = getTypeByRemark(middle.getRemark());
+            values.append( type!=null&&!type.isEmpty()  ? "'"+type +"',":"NULL,");
+
+            period = getPeriodByRemark(middle.getRemark());
+            values.append( period!=null&&!period.isEmpty()  ? "'"+period +"',":"NULL,");
             // 设备号   device_no;
             values.append( middle.getDevice_no()!= null && !middle.getDevice_no().isEmpty() ? "'"+middle.getDevice_no() +"',":"NULL,");
             // node_id;  采集OPC
@@ -61,7 +69,6 @@ public class ToMiddleInsertSQL {
             }else{
                 values.append( "0");
             }
-            //取值类型  1一次  2最小值  3最大值  4平均值  5累计次数g type;
             //取值频率 秒  30  60 300  period;
             //数据类型 1 int   2  float 3  bool   4 string format;
             values.append("),");
@@ -69,7 +76,7 @@ public class ToMiddleInsertSQL {
         sql.append("insert data_types ( "
                 + " facility_title,facility_type_id,facility_category,plant_title, "
                 + " process_title,title,category_id, "                                    //type,period,format,
-                + " unit,status,remark,device_no,node_id, is_opc ) "
+                + " unit,status,remark,type,period,device_no,node_id, is_opc ) "
                 + " values "
                 );
         sql.append(values);
@@ -92,7 +99,7 @@ public class ToMiddleInsertSQL {
          UPDATE data_types SET type=2 WHERE remark LIKE '%最小值%' AND type IS NULL
          UPDATE data_types SET type=1 WHERE remark LIKE '%一次%' AND type IS NULL
 
-         UPDATE data_types SET status=1
+         UPDATE data_types SET status=1 where  status = 8;
 
          -- 更新period
          UPDATE data_types SET period=30 WHERE remark LIKE '30%' AND period IS NULL
@@ -101,7 +108,7 @@ public class ToMiddleInsertSQL {
 
          -- 更新format
          -- format=2   2:float
-         UPDATE data_types SET format=2 WHERE (category_id IN (2,3,6,9,12,17,18,19,21,23,70,113,14,8,10,20,15,'300','301','302','303')) AND format IS NULL
+         UPDATE data_types SET format=2 WHERE (category_id IN (2,3,6,9,11,12,17,18,19,21,22,23,70,113,14,8,10,20,15,'300','301','302','303')) AND format IS NULL
          -- format=1  1:int
          UPDATE data_types SET format=1 WHERE category_id=1 AND format IS NULL
          -- format=3  3:bool（true:1,false:0)，
@@ -112,5 +119,41 @@ public class ToMiddleInsertSQL {
          */
 
 
+    }
+
+    //返回类型 //取值类型  1一次  2最小值  3最大值  4平均值  5累计次数
+    public String getTypeByRemark(String remark){
+        if(remark!=null && !remark.isEmpty()){
+            if(remark.indexOf("一次")>-1){
+                return "1";
+            }else if(remark.indexOf("最小值")>-1){
+                return "2";
+            }else if(remark.indexOf("最大值")>-1){
+                return "3";
+            }else if(remark.indexOf("平均值")>-1){
+                return "4";
+            }else if(remark.indexOf("累计次数")>-1){
+                return "5";
+            }else{
+                return null;
+            }
+        }
+        return null;
+    }
+
+    //返回类型 //取值类型  1一次  2最小值  3最大值  4平均值  5累计次数
+    public String getPeriodByRemark(String remark){
+        if(remark!=null && !remark.isEmpty()){
+            if(remark.indexOf("30")>-1){
+                return "30";
+            }else if(remark.indexOf("一分钟")>-1 || remark.indexOf("1分钟")>-1 || remark.indexOf("60")>-1){
+                return "60";
+            }else if(remark.indexOf("5分钟")>-1 || remark.indexOf("五分钟")>-1){
+                return "300";
+            }else{
+                return null;
+            }
+        }
+        return null;
     }
 }
