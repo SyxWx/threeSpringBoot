@@ -26,7 +26,7 @@ public class TestScheduled {
          *  git branch
          *
          *  新建分支
-         *  git branch syx_dev_frist
+         *  git branch syx_dev
          *
          *  切换分支
          *  git checkout syx_dev_frist
