@@ -1,0 +1,18 @@
+test:
+  customerId: 15
+  #是否开启OPC数据采集
+  isOpenOpc: false
+  middle:
+    #是否开启中间库转发
+    forward: true
+  realDataBaseUrl: http://127.0.0.1/ems/utils/readOnly4BeanJ.action?name=MobileDI&method=queryRealData&attr=value
+  batchSize: 20
+flow:
+  control:
+    limit: 1300000
+
+factory:
+  name: test钢铁
+
+sms:
+  iphone: 18864835738
