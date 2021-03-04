@@ -108,13 +108,23 @@ public class ToMiddleInsertSQL {
 
          -- 更新format
          -- format=2   2:float
-         UPDATE data_types SET format=2 WHERE (category_id IN (2,3,6,9,11,12,17,18,19,21,22,23,70,113,14,8,10,20,15,'300','301','302','303')) AND format IS NULL
+         UPDATE data_types SET format=2 WHERE (category_id IN (2,3,6,7,9,11,12,17,18,19,21,22,23,27,28,29,70,113,14,8,10,20,15,'300','301','302','303')) AND format IS NULL
          -- format=1  1:int
-         UPDATE data_types SET format=1 WHERE category_id=1 AND format IS NULL
+         UPDATE data_types SET format= 1 WHERE category_id=1 AND format IS NULL
          -- format=3  3:bool（true:1,false:0)，
          UPDATE data_types SET format=3 WHERE category_id=30 AND format IS NULL
          -- format=4  4:string
          UPDATE data_types SET format=4 WHERE category_id IN (4,5,24) AND format IS NULL
+         *
+         */
+
+        /**
+         *
+         *  请先执行stop-groundservice.bat，上传完毕后，
+         *  再通过start-groundservice.bat启动，
+         *  30s后通过cmd命令netstat -ano|findstr 9100确定程序是否启动成功。
+         *  通过查看logs下日志确定程序是否启动正常：
+         *
          *
          */
 
@@ -156,4 +166,7 @@ public class ToMiddleInsertSQL {
         }
         return null;
     }
+
+
+
 }

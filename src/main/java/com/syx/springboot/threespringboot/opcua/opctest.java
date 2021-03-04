@@ -36,12 +36,12 @@ public class opctest {
     @PostConstruct
     private void initialize() {
         //订阅
-        this.subscribe();
+       // this.subscribe();
         //收集
-        this.collect();
+      //  this.collect();
     }
 
-    @Scheduled(cron = "1/3 * * * * ?")
+    //@Scheduled(cron = "1/3 * * * * ?")
     public String subscribe() {
         //System.out.println("初始化--subscribe -订阅开始-----------------");
         log.info("初始化--subscribe -订阅开始-----------------");
