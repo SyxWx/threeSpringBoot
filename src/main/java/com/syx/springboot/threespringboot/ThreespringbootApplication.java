@@ -26,17 +26,17 @@ public class ThreespringbootApplication {
      *  git branch syx_dev
      *
      *  切换分支
-     *  git checkout syx_dev_frist
+     *  git checkout syx_dev
      *
      *  推送分支到仓库(推送后，在远程仓库中查看到分支)
-     *  git push origin syx_dev_frist
+     *  git push origin syx_dev
      *
      *  推送代码到仓库分支(推送后，在远程仓库所属的分支中查看代码)
-     *  git push origin syx_dev_frist
+     *  git push origin syx_dev
      *
      *
-     *  推送代码到远程仓库  从syx_dev_frist分支 推送到 syx_dev分支
-     *  git push origin syx_dev_frist:syx_dev
+     *  推送代码到远程仓库  从syx_dev分支 推送到 master 分支
+     *  git push origin syx_dev:master
      *
      *  获取远程仓库中的代码到本地仓库中。
      *  git pull

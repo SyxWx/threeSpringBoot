@@ -6,3 +6,16 @@ syx:
 spring:
   profiles:
     active: test
+spring:
+  datasource:
+    druid:
+      db1:
+        # url: jdbc:mysql://172.31.141.47:3306/bme_prod?characterEncoding=utf-8&useSSL=false&autoReconnect=true
+               url: jdbc:mysql://172.31.140.203:3306/bme_prod?characterEncoding=utf-8&useSSL=false&autoReconnect=true
+        #        url: jdbc:mysql://192.168.1.243:3306/bme_prod?characterEncoding=utf-8&useSSL=false&autoReconnect=true
+        username: bme
+        password: Bme@709394
+        driver-class-name: com.mysql.jdbc.Driver
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
