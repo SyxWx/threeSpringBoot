@@ -24,6 +24,10 @@ public class TestScheduled {
         System.out.println("1测试git-merge定时任务");
         System.out.println("2测试git-merge定时任务");
         System.out.println("3测试git-merge定时任务");
+        System.out.println("master测试定时任务");
+        System.out.println("master1测试git-merge定时任务");
+        System.out.println("master2测试git-merge定时任务");
+        System.out.println("master3测试git-merge定时任务");
 
         /**
          *  查看分支
