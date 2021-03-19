@@ -47,7 +47,7 @@ public class NettyClientFactory  extends AbstractClientFactory{
         }
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void initRemoteAddress() {
         if (StringUtils.isEmpty(serverAddress)) {
             logger.error("远程推送地址为空");

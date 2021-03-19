@@ -8,7 +8,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.apache.catalina.filters.CorsFilter;
 
 
-@SpringBootApplication
+//@SpringBootApplication
 public class WebSocketApplication {
 
     public static void main(String[] args){

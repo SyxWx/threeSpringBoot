@@ -13,7 +13,7 @@ public class ThreespringbootApplication {
 
         System.out.print("This is Three Spring boot");
 
-        Auditor.fire();
+       //Auditor.fire();
 
 
     }

@@ -39,7 +39,7 @@ public class SingleWebSocketServer {
      */
     private static final ConcurrentHashMap<String,Session> SESSION_MAP = new ConcurrentHashMap<>();
 
-    @PostConstruct
+    //@PostConstruct
     public void init(){
         //初始化
         log.info("websocket初始化....");
